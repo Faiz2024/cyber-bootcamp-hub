@@ -44,14 +44,28 @@ const Registration = () => {
   });
 
   const onSubmit = async (data: RegistrationForm) => {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Registration data:", data);
-    setIsSubmitted(true);
-    toast({
-      title: "Pendaftaran Berhasil! 🎉",
-      description: "Tim kami akan menghubungimu dalam 1x24 jam.",
-    });
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzDB5VJaBuwruR0PgFwCx9o3hGlsAadSEe9u6MMfZ8UC0f_iC1tkc22d7Xej0th69TsmQ/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
+      setIsSubmitted(true);
+      toast({
+        title: "Pendaftaran Berhasil! 🎉",
+        description: "Tim kami akan menghubungimu dalam 1x24 jam.",
+      });
+    } catch (error) {
+      toast({
+        title: "Gagal Mengirim",
+        description: "Terjadi kesalahan. Silakan coba lagi.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (isSubmitted) {
