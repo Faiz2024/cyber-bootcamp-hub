@@ -40,7 +40,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Bootcamp intensif 12 minggu yang mengubahmu dari pemula menjadi profesional cybersecurity siap kerja. 
+            Bootcamp intensif 3 hari yang mengubahmu dari pemula menjadi profesional cybersecurity siap kerja. 
             Belajar langsung dari praktisi keamanan siber berpengalaman.
           </p>
 

@@ -3,34 +3,19 @@ import { Terminal } from "lucide-react";
 
 const modules = [
   {
-    week: "Minggu 1-2",
+    week: "Hari 1",
     title: "Fundamentals & Networking",
     topics: ["Dasar Keamanan Siber", "TCP/IP & Networking", "Linux Administration", "Command Line Mastery"],
   },
   {
-    week: "Minggu 3-4",
+    week: "Hari 2",
     title: "Ethical Hacking",
     topics: ["Reconnaissance & Scanning", "Vulnerability Assessment", "Metasploit Framework", "Web Application Security"],
   },
   {
-    week: "Minggu 5-6",
+    week: "Hari 3",
     title: "Defense & Blue Team",
     topics: ["SIEM & Log Analysis", "Intrusion Detection Systems", "Firewall Configuration", "Incident Response"],
-  },
-  {
-    week: "Minggu 7-8",
-    title: "Cloud & Advanced Security",
-    topics: ["Cloud Security (AWS/Azure)", "Container Security", "Zero Trust Architecture", "Identity & Access Management"],
-  },
-  {
-    week: "Minggu 9-10",
-    title: "Forensics & Compliance",
-    topics: ["Digital Forensics", "Malware Analysis", "GRC & Compliance", "Risk Assessment"],
-  },
-  {
-    week: "Minggu 11-12",
-    title: "Capstone & Career Prep",
-    topics: ["Proyek Akhir Tim", "CTF Competition", "Persiapan Sertifikasi", "Mock Interview & CV Review"],
   },
 ];
 

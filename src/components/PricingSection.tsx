@@ -17,36 +17,6 @@ const plans = [
     ],
     featured: false,
   },
-  {
-    name: "Full Bootcamp",
-    price: "Rp 8.900.000",
-    period: "sekali bayar",
-    description: "Pengalaman bootcamp lengkap",
-    features: [
-      "Semua fitur Self-Paced",
-      "Live session 3x/minggu",
-      "1-on-1 mentoring",
-      "Hands-on cyber lab",
-      "Proyek capstone",
-      "Bantuan pencarian kerja",
-      "Persiapan sertifikasi",
-    ],
-    featured: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "per tim",
-    description: "Untuk perusahaan & tim",
-    features: [
-      "Semua fitur Full Bootcamp",
-      "Kurikulum disesuaikan",
-      "Dedicated instructor",
-      "Progress report tim",
-      "Invoice perusahaan",
-    ],
-    featured: false,
-  },
 ];
 
 const PricingSection = () => {
