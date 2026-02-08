@@ -67,10 +67,8 @@ const HeroSection = () => {
           className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4"
         >
           {[
-            { value: "500+", label: "Alumni" },
-            { value: "95%", label: "Tingkat Kerja" },
-            { value: "12", label: "Minggu Intensif" },
-            { value: "4.9/5", label: "Rating" },
+            { value: "3", label: "Hari Intensif" },
+            { value: "95%", label: "Tingkat Paham" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-mono text-3xl font-bold text-primary glow-text-primary md:text-4xl">

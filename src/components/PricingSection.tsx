@@ -6,7 +6,7 @@ import { Check, Star } from "lucide-react";
 const plans = [
   {
     name: "Self-Paced",
-    price: "Rp 4.500.000",
+    price: "Rp 30.000",
     period: "sekali bayar",
     description: "Akses materi dan rekaman sesi",
     features: [

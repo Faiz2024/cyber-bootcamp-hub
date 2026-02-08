@@ -32,7 +32,7 @@ const CurriculumSection = () => {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-primary">
-            12 Minggu Intensif
+            3 Hari Intensif
           </span>
           <h2 className="text-3xl font-bold md:text-5xl">
             <span className="text-primary glow-text-primary">Kurikulum</span> Kami
