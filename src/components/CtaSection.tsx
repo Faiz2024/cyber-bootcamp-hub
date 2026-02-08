@@ -21,8 +21,8 @@ const CtaSection = () => {
             <span className="text-primary glow-text-primary">Cybersecurity</span>?
           </h2>
           <p className="mb-10 text-lg text-muted-foreground">
-            Bergabunglah dengan 500+ alumni yang telah berhasil berkarir di bidang keamanan siber. 
-            Batch berikutnya dimulai Maret 2026.
+            Bergabunglah dengan pemateri yang telah berhasil berkarir di bidang keamanan siber. 
+            Batch pertama dimulai Maret 2026.
           </p>
           <Link to="/daftar">
             <Button variant="hero" size="lg" className="text-base px-10 py-6">
