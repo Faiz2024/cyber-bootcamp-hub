@@ -24,7 +24,6 @@ const registrationSchema = z.object({
   phone: z.string().trim().min(10, "Nomor HP minimal 10 digit").max(15, "Nomor HP terlalu panjang"),
   education: z.string().min(1, "Pilih pendidikan terakhir"),
   experience: z.string().min(1, "Pilih pengalaman IT"),
-  paymentPurpose: z.string().trim().min(3, "Keterangan tujuan pembayaran minimal 3 karakter").max(500, "Keterangan terlalu panjang"),
 });
 
 type RegistrationForm = z.infer<typeof registrationSchema>;
@@ -284,20 +283,30 @@ const Registration = () => {
               </div>
             </div>
 
-            {/* Payment Purpose */}
-            <div className="space-y-2">
-              <Label htmlFor="paymentPurpose" className="font-mono text-sm">
-                Keterangan Tujuan Pembayaran <span className="text-destructive">*</span>
+            {/* Payment Info */}
+            <div className="space-y-3">
+              <Label className="font-mono text-sm">
+                Informasi Pembayaran
               </Label>
-              <Input
-                id="paymentPurpose"
-                placeholder="Contoh: Pembayaran bootcamp batch #12"
-                className="bg-muted/50 border-border focus:border-primary"
-                {...register("paymentPurpose")}
-              />
-              {errors.paymentPurpose && (
-                <p className="text-xs text-destructive">{errors.paymentPurpose.message}</p>
-              )}
+              <div className="rounded-lg border border-primary/30 bg-primary/5 p-5 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Bank</span>
+                  <span className="font-mono font-bold text-foreground">BCA</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">No. Rekening</span>
+                  <span className="font-mono font-bold text-foreground">1234567890</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Atas Nama</span>
+                  <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                </div>
+                <div className="my-2 border-t border-border" />
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-foreground">Total Transfer</span>
+                  <span className="font-mono text-lg font-extrabold text-primary">Rp 30.000</span>
+                </div>
+              </div>
             </div>
 
             {/* Payment Proof Upload */}
