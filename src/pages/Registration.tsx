@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Shield, Send, ArrowLeft } from "lucide-react";
+import { Shield, Send, ArrowLeft, Upload, X, FileImage } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -25,14 +24,27 @@ const registrationSchema = z.object({
   phone: z.string().trim().min(10, "Nomor HP minimal 10 digit").max(15, "Nomor HP terlalu panjang"),
   education: z.string().min(1, "Pilih pendidikan terakhir"),
   experience: z.string().min(1, "Pilih pengalaman IT"),
-  package: z.string().min(1, "Pilih paket bootcamp"),
-  motivation: z.string().trim().min(10, "Ceritakan motivasimu minimal 10 karakter").max(1000, "Motivasi terlalu panjang"),
+  paymentPurpose: z.string().trim().min(3, "Keterangan tujuan pembayaran minimal 3 karakter").max(500, "Keterangan terlalu panjang"),
 });
 
 type RegistrationForm = z.infer<typeof registrationSchema>;
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+
+const fileToBase64 = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
 const Registration = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [paymentProof, setPaymentProof] = useState<File | null>(null);
+  const [proofError, setProofError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -43,15 +55,52 @@ const Registration = () => {
     resolver: zodResolver(registrationSchema),
   });
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    setProofError(null);
+
+    if (!file) return;
+
+    if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+      setProofError("Format file harus JPG, PNG, WEBP, atau PDF");
+      return;
+    }
+    if (file.size > MAX_FILE_SIZE) {
+      setProofError("Ukuran file maksimal 5MB");
+      return;
+    }
+
+    setPaymentProof(file);
+  };
+
+  const removeFile = () => {
+    setPaymentProof(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const onSubmit = async (data: RegistrationForm) => {
+    if (!paymentProof) {
+      setProofError("Upload bukti pembayaran wajib diisi");
+      return;
+    }
+
     try {
-      const response = await fetch(
+      const base64Proof = await fileToBase64(paymentProof);
+
+      const payload = {
+        ...data,
+        paymentProofName: paymentProof.name,
+        paymentProofType: paymentProof.type,
+        paymentProofBase64: base64Proof,
+      };
+
+      await fetch(
         "https://script.google.com/macros/s/AKfycbzDB5VJaBuwruR0PgFwCx9o3hGlsAadSEe9u6MMfZ8UC0f_iC1tkc22d7Xej0th69TsmQ/exec",
         {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
         }
       );
       setIsSubmitted(true);
@@ -235,39 +284,72 @@ const Registration = () => {
               </div>
             </div>
 
-            {/* Package */}
+            {/* Payment Purpose */}
             <div className="space-y-2">
-              <Label className="font-mono text-sm">
-                Pilih Paket <span className="text-destructive">*</span>
+              <Label htmlFor="paymentPurpose" className="font-mono text-sm">
+                Keterangan Tujuan Pembayaran <span className="text-destructive">*</span>
               </Label>
-              <Select onValueChange={(value) => setValue("package", value)}>
-                <SelectTrigger className="bg-muted/50 border-border">
-                  <SelectValue placeholder="Pilih paket bootcamp" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="self-paced">Self-Paced — Rp 4.500.000</SelectItem>
-                  <SelectItem value="full">Full Bootcamp — Rp 8.900.000</SelectItem>
-                  <SelectItem value="enterprise">Enterprise — Custom</SelectItem>
-                </SelectContent>
-              </Select>
-              {errors.package && (
-                <p className="text-xs text-destructive">{errors.package.message}</p>
+              <Input
+                id="paymentPurpose"
+                placeholder="Contoh: Pembayaran bootcamp batch #12"
+                className="bg-muted/50 border-border focus:border-primary"
+                {...register("paymentPurpose")}
+              />
+              {errors.paymentPurpose && (
+                <p className="text-xs text-destructive">{errors.paymentPurpose.message}</p>
               )}
             </div>
 
-            {/* Motivation */}
+            {/* Payment Proof Upload */}
             <div className="space-y-2">
-              <Label htmlFor="motivation" className="font-mono text-sm">
-                Motivasi <span className="text-destructive">*</span>
+              <Label className="font-mono text-sm">
+                Upload Bukti Pembayaran <span className="text-destructive">*</span>
               </Label>
-              <Textarea
-                id="motivation"
-                placeholder="Ceritakan mengapa kamu tertarik belajar cybersecurity..."
-                className="min-h-[120px] bg-muted/50 border-border focus:border-primary"
-                {...register("motivation")}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".jpg,.jpeg,.png,.webp,.pdf"
+                onChange={handleFileChange}
+                className="hidden"
               />
-              {errors.motivation && (
-                <p className="text-xs text-destructive">{errors.motivation.message}</p>
+
+              {!paymentProof ? (
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="flex w-full flex-col items-center gap-3 rounded-lg border-2 border-dashed border-border bg-muted/30 p-8 transition-colors hover:border-primary/50 hover:bg-muted/50"
+                >
+                  <Upload className="h-8 w-8 text-muted-foreground" />
+                  <div className="text-center">
+                    <p className="text-sm font-medium text-foreground">Klik untuk upload file</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      JPG, PNG, WEBP, atau PDF (maks. 5MB)
+                    </p>
+                  </div>
+                </button>
+              ) : (
+                <div className="flex items-center gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4">
+                  <FileImage className="h-8 w-8 shrink-0 text-primary" />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-foreground">
+                      {paymentProof.name}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {(paymentProof.size / 1024).toFixed(1)} KB
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={removeFile}
+                    className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              )}
+
+              {proofError && (
+                <p className="text-xs text-destructive">{proofError}</p>
               )}
             </div>
 
