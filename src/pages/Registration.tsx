@@ -19,9 +19,9 @@ import {
 import { toast } from "@/hooks/use-toast";
 
 const registrationSchema = z.object({
-  name: z.string().trim().min(2, "Nama minimal 2 karakter").max(100, "Nama terlalu panjang"),
+  nama: z.string().trim().min(2, "Nama minimal 2 karakter").max(100, "Nama terlalu panjang"),
   email: z.string().trim().email("Email tidak valid").max(255, "Email terlalu panjang"),
-  phone: z.string().trim().min(10, "Nomor HP minimal 10 digit").max(15, "Nomor HP terlalu panjang"),
+  whatsapp: z.string().trim().min(10, "Nomor HP minimal 10 digit").max(15, "Nomor HP terlalu panjang"),
   education: z.string().min(1, "Pilih pendidikan terakhir"),
   experience: z.string().min(1, "Pilih pengalaman IT"),
 });
@@ -88,7 +88,7 @@ const Registration = () => {
 
       const payload = {
         ...data,
-        paymentProofName: paymentProof.name,
+        paymentProofName: paymentProof.nama,
         paymentProofType: paymentProof.type,
         paymentProofBase64: base64Proof,
       };
@@ -191,17 +191,17 @@ const Registration = () => {
           >
             {/* Nama */}
             <div className="space-y-2">
-              <Label htmlFor="name" className="font-mono text-sm">
+              <Label htmlFor="nama" className="font-mono text-sm">
                 Nama Lengkap <span className="text-destructive">*</span>
               </Label>
               <Input
-                id="name"
+                id="nama"
                 placeholder="Masukkan nama lengkap"
                 className="bg-muted/50 border-border focus:border-primary"
-                {...register("name")}
+                {...register("nama")}
               />
-              {errors.name && (
-                <p className="text-xs text-destructive">{errors.name.message}</p>
+              {errors.nama && (
+                <p className="text-xs text-destructive">{errors.nama.message}</p>
               )}
             </div>
 
@@ -222,19 +222,19 @@ const Registration = () => {
               )}
             </div>
 
-            {/* Phone */}
+            {/* whatsapp */}
             <div className="space-y-2">
-              <Label htmlFor="phone" className="font-mono text-sm">
+              <Label htmlFor="whatsapp" className="font-mono text-sm">
                 Nomor HP / WhatsApp <span className="text-destructive">*</span>
               </Label>
               <Input
-                id="phone"
+                id="whatsapp"
                 placeholder="08xxxxxxxxxx"
                 className="bg-muted/50 border-border focus:border-primary"
-                {...register("phone")}
+                {...register("whatsapp")}
               />
-              {errors.phone && (
-                <p className="text-xs text-destructive">{errors.phone.message}</p>
+              {errors.whatsapp && (
+                <p className="text-xs text-destructive">{errors.whatsapp.message}</p>
               )}
             </div>
 
@@ -341,7 +341,7 @@ const Registration = () => {
                   <FileImage className="h-8 w-8 shrink-0 text-primary" />
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-foreground">
-                      {paymentProof.name}
+                      {paymentProof.nama}
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {(paymentProof.size / 1024).toFixed(1)} KB
