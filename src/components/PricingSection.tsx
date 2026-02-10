@@ -39,7 +39,7 @@ const PricingSection = () => {
           </h2>
         </motion.div>
 
-        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
+        <div className="mx-auto flex flex-wrap justify-center gap-6 max-w-5xl">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -47,7 +47,7 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className={`relative rounded-lg border p-8 transition-all duration-300 ${
+              className={`relative w-full md:w-[350px] rounded-lg border p-8 transition-all duration-300 ${
                 plan.featured
                   ? "border-primary bg-card glow-primary scale-105"
                   : "border-border bg-card hover:border-primary/30"
