@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 font-mono text-lg font-bold text-primary">
           <Shield className="h-6 w-6" />
-          <span className="glow-text-primary">Cyber015</span>
+          <span className="glow-text-primary">Bootcamp On Coconut</span>
         </Link>
 
         {/* Desktop nav */}
