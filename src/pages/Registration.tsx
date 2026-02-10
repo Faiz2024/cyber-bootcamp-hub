@@ -142,7 +142,7 @@ const Registration = () => {
               Pendaftaran <span className="text-primary glow-text-primary">Berhasil!</span>
             </h1>
             <p className="mb-8 text-muted-foreground">
-              Terima kasih telah mendaftar CyberShield Bootcamp. Tim kami akan menghubungimu dalam 1x24 jam melalui email dan WhatsApp.
+              Terima kasih telah mendaftar BoC-Cyber Bootcamp. Tim kami akan menghubungimu dalam 1x24 jam melalui email dan WhatsApp.
             </p>
             <Link to="/">
               <Button variant="hero-outline">
@@ -170,13 +170,13 @@ const Registration = () => {
           <div className="mx-auto max-w-2xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-10">
               <span className="mb-3 inline-block font-mono text-sm uppercase tracking-widest text-primary">
-                Batch #12 — Maret 2026
+                Batch #1 — Maret 2026
               </span>
               <h1 className="mb-3 text-3xl font-bold md:text-4xl">
                 Form <span className="text-primary glow-text-primary">Pendaftaran</span>
               </h1>
               <p className="text-muted-foreground">
-                Isi formulir di bawah ini untuk mendaftar CyberShield Bootcamp. Kami akan menghubungimu untuk konfirmasi.
+                Isi formulir di bawah ini untuk mendaftar BoC-Cyber Bootcamp. Kami akan menghubungimu untuk konfirmasi.
               </p>
             </motion.div>
 
