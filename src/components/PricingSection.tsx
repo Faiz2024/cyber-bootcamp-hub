@@ -6,14 +6,14 @@ import { Check, Star } from "lucide-react";
 const plans = [
   {
     name: "Self-Paced",
-    price: "Rp 30.000",
+    price: "Rp 50.000",
     period: "sekali bayar",
     description: "Akses materi dan rekaman sesi",
     features: [
-      "Akses materi selamanya",
+      "E-Sertifikat",
+      "Materi dan Modul",
+      "Akses Grup Diskusi",
       "Rekaman semua sesi",
-      "Forum komunitas",
-      "Sertifikat kelulusan",
     ],
     featured: false,
   },

@@ -29,12 +29,12 @@ const HeroSection = () => {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 font-mono text-sm text-primary">
             <Terminal className="h-4 w-4" />
-            <span>Batch #1 — Mulai Maret 2026</span>
+            <span>Mulai Maret 2026</span>
           </div> 
 
           <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
             <span className="text-foreground">Jadilah </span>
-            <span className="text-primary glow-text-primary">Cyber Defender</span>
+            <span className="text-primary glow-text-primary">Cyber Offender</span>
             <br />
             <span className="text-foreground">Profesional</span>
           </h1>
