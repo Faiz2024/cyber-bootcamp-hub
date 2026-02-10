@@ -50,6 +50,7 @@ const Registration = () => {
   const [proofError, setProofError] = useState<string | null>(null);
   const [voucherCode, setVoucherCode] = useState("");
   const [voucherApplied, setVoucherApplied] = useState(false);
+  const [selectedPayment, setSelectedPayment] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const finalPrice = voucherApplied ? DISCOUNTED_PRICE : ORIGINAL_PRICE;
@@ -246,7 +247,7 @@ const Registration = () => {
                 <Label className="font-mono text-sm">
                   Metode Pembayaran <span className="text-destructive">*</span>
                 </Label>
-                <Select onValueChange={(value) => setValue("paymentMethod", value)}>
+                <Select onValueChange={(value) => { setValue("paymentMethod", value); setSelectedPayment(value); }}>
                   <SelectTrigger className="bg-muted/50 border-border">
                     <SelectValue placeholder="Pilih metode pembayaran" />
                   </SelectTrigger>
@@ -261,22 +262,91 @@ const Registration = () => {
                 {errors.paymentMethod && <p className="text-xs text-destructive">{errors.paymentMethod.message}</p>}
               </div>
 
-              {/* Payment Info */}
+              {/* Payment Info - dynamic based on method */}
+              {selectedPayment && (
               <div className="space-y-3">
                 <Label className="font-mono text-sm">Informasi Pembayaran</Label>
                 <div className="rounded-lg border border-primary/30 bg-primary/5 p-5 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Bank</span>
-                    <span className="font-mono font-bold text-foreground">BCA</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">No. Rekening</span>
-                    <span className="font-mono font-bold text-foreground">1234567890</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Atas Nama</span>
-                    <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
-                  </div>
+                  {selectedPayment === "bank-bca" && (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Bank</span>
+                        <span className="font-mono font-bold text-foreground">BCA</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">No. Rekening</span>
+                        <span className="font-mono font-bold text-foreground">1234567890</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Atas Nama</span>
+                        <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                      </div>
+                    </>
+                  )}
+                  {selectedPayment === "dana" && (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">E-Wallet</span>
+                        <span className="font-mono font-bold text-foreground">Dana</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">No. Dana</span>
+                        <span className="font-mono font-bold text-foreground">0812-3456-7890</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Atas Nama</span>
+                        <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                      </div>
+                    </>
+                  )}
+                  {selectedPayment === "gopay" && (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">E-Wallet</span>
+                        <span className="font-mono font-bold text-foreground">GoPay</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">No. GoPay</span>
+                        <span className="font-mono font-bold text-foreground">0812-3456-7890</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Atas Nama</span>
+                        <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                      </div>
+                    </>
+                  )}
+                  {selectedPayment === "ovo" && (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">E-Wallet</span>
+                        <span className="font-mono font-bold text-foreground">OVO</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">No. OVO</span>
+                        <span className="font-mono font-bold text-foreground">0812-3456-7890</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Atas Nama</span>
+                        <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                      </div>
+                    </>
+                  )}
+                  {selectedPayment === "shopeepay" && (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">E-Wallet</span>
+                        <span className="font-mono font-bold text-foreground">ShopeePay</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">No. ShopeePay</span>
+                        <span className="font-mono font-bold text-foreground">0812-3456-7890</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">Atas Nama</span>
+                        <span className="font-mono font-bold text-foreground">CyberShield Academy</span>
+                      </div>
+                    </>
+                  )}
                   <div className="my-2 border-t border-border" />
 
                   {/* Voucher */}
@@ -318,6 +388,7 @@ const Registration = () => {
                   </div>
                 </div>
               </div>
+              )}
 
               {/* Payment Proof Upload */}
               <div className="space-y-2">
