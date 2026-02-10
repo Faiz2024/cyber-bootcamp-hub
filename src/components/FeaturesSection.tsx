@@ -47,7 +47,7 @@ const FeaturesSection = () => {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-accent">
-            Mengapa BoC - Cyber?
+            Mengapa BoC-Cyber?
           </span>
           <h2 className="text-3xl font-bold md:text-5xl">
             Keunggulan <span className="text-accent glow-text-accent">Kami</span>

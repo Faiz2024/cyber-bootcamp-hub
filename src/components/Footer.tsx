@@ -8,7 +8,7 @@ const Footer = () => {
           <div>
             <div className="mb-4 flex items-center gap-2 font-mono text-lg font-bold text-primary">
               <Shield className="h-5 w-5" />
-              <span>BoC - Cyber</span>
+              <span>BoC-Cyber</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Bootcamp cybersecurity terbaik. Jadilah profesional keamanan siber yang handal.
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; BoC - Cyber Bootcamp.</p>
+          <p>&copy; BoC-Cyber Bootcamp.</p>
         </div>
       </div>
     </footer>
