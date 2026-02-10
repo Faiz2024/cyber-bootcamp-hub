@@ -3,19 +3,22 @@ import { Terminal } from "lucide-react";
 
 const modules = [
   {
-    week: "Hari 1",
-    title: "Fundamentals & Networking",
-    topics: ["Dasar Keamanan Siber", "TCP/IP & Networking", "Linux Administration", "Command Line Mastery"],
+    week: "Pertemuan 01",
+    title: "Art of Reconnaissance",
+    topics: ["Passive & Active Information Gathering"],
+    goal: "Inventory Report",
   },
   {
-    week: "Hari 2",
-    title: "Ethical Hacking",
-    topics: ["Reconnaissance & Scanning", "Vulnerability Assessment", "Metasploit Framework", "Web Application Security"],
+    week: "Pertemuan 02",
+    title: "Web Invasion",
+    topics: ["Exploiting the Web Layer"],
+    goal: "Initial Access",
   },
   {
-    week: "Hari 3",
-    title: "Defense & Blue Team",
-    topics: ["SIEM & Log Analysis", "Intrusion Detection Systems", "Firewall Configuration", "Incident Response"],
+    week: "Pertemuan 03",
+    title: "Post Exploitation",
+    topics: ["Privilege Escalation & Persistence"],
+    goal: "Crown Jewel",
   },
 ];
 
@@ -32,7 +35,7 @@ const CurriculumSection = () => {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-primary">
-            3 Hari Intensif
+            3 Pertemuan Intensif
           </span>
           <h2 className="text-3xl font-bold md:text-5xl">
             <span className="text-primary glow-text-primary">Kurikulum</span> Kami
@@ -54,7 +57,7 @@ const CurriculumSection = () => {
                 {module.week}
               </div>
               <h3 className="mb-4 font-mono text-lg font-bold">{module.title}</h3>
-              <ul className="space-y-2">
+              <ul className="space-y-2 mb-4">
                 {module.topics.map((topic) => (
                   <li key={topic} className="flex items-center gap-2 text-sm text-muted-foreground">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -62,6 +65,10 @@ const CurriculumSection = () => {
                   </li>
                 ))}
               </ul>
+              <div className="rounded-md bg-primary/10 px-3 py-2">
+                <span className="font-mono text-xs text-muted-foreground">Goal: </span>
+                <span className="font-mono text-xs font-bold text-primary">{module.goal}</span>
+              </div>
             </motion.div>
           ))}
         </div>
