@@ -107,13 +107,15 @@ const Registration = () => {
     try {
       const base64Proof = await fileToBase64(paymentProof);
       const payload = {
-        ...data,
-        voucherCode: voucherApplied ? VALID_VOUCHER : "",
-        totalPrice: finalPrice,
-        paymentProofName: paymentProof.name,
-        paymentProofType: paymentProof.type,
-        paymentProofBase64: base64Proof,
-      };
+      ...data,
+      voucherCode: voucherApplied ? VALID_VOUCHER : "",
+      totalPrice: finalPrice,
+      
+    
+      fileName: paymentProof.name,      
+      fileMimeType: paymentProof.type,  
+      fileData: base64Proof,            
+    };
       await fetch(
         "https://script.google.com/macros/s/AKfycbzDB5VJaBuwruR0PgFwCx9o3hGlsAadSEe9u6MMfZ8UC0f_iC1tkc22d7Xej0th69TsmQ/exec",
         { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }
