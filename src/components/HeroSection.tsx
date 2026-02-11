@@ -33,15 +33,14 @@ const HeroSection = () => {
           </div> 
 
           <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            <span className="text-foreground">Jadilah </span>
-            <span className="text-primary glow-text-primary">Cyber Offender</span>
+            <span className="text-primary glow-text-primary">MAN BEHIND</span>
             <br />
-            <span className="text-foreground">Profesional</span>
+            <span className="text-primary glow-text-primary">THE HAT</span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Bootcamp intensif 3 hari yang mengubahmu dari pemula menjadi profesional cybersecurity. 
-            Belajar langsung dari praktisi keamanan siber berpengalaman.
+            Bootcamp online intensif 3 hari bertema ofensif. Kuasai teknik reconnaissance, 
+            web exploitation, hingga post exploitation langsung dari praktisi keamanan siber.
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
