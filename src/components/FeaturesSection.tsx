@@ -3,34 +3,34 @@ import { Shield, Users, Award, Laptop, BookOpen, Zap } from "lucide-react";
 
 const features = [
   {
-    icon: Shield,
-    title: "Hands-on Labs",
-    description: "Praktik langsung di lab cyber range dengan simulasi serangan dan pertahanan nyata.",
-  },
-  {
-    icon: Users,
-    title: "Mentor Praktisi",
-    description: "Dibimbing oleh profesional cybersecurity aktif dari perusahaan terkemuka.",
-  },
-  {
     icon: Award,
-    title: "Sertifikasi",
-    description: "Persiapan sertifikasi CompTIA Security+, CEH, dan sertifikat kelulusan bootcamp.",
-  },
-  {
-    icon: Laptop,
-    title: "Remote & Fleksibel",
-    description: "Belajar dari mana saja dengan jadwal yang dirancang untuk profesional.",
+    title: "E-Sertifikat",
+    description: "Dapatkan sertifikat digital sebagai bukti kompetensi di bidang offensive security.",
   },
   {
     icon: BookOpen,
-    title: "Proyek Nyata",
-    description: "Bangun portofolio dengan proyek keamanan siber dari kasus dunia nyata.",
+    title: "Materi & Modul",
+    description: "Akses lengkap ke materi dan modul pembelajaran yang terstruktur.",
+  },
+  {
+    icon: Laptop,
+    title: "Full Praktik",
+    description: "100% hands-on lab — langsung praktik teknik reconnaissance, exploitation, dan post-exploitation.",
+  },
+  {
+    icon: Users,
+    title: "Networking & Grup Diskusi",
+    description: "Bergabung dengan komunitas dan grup diskusi sesama peserta serta praktisi keamanan siber.",
   },
   {
     icon: Zap,
-    title: "Karir Support",
-    description: "Bantuan pencarian kerja, review CV, dan koneksi langsung ke perusahaan partner.",
+    title: "Rekaman Ulang",
+    description: "Akses rekaman semua sesi untuk dipelajari ulang kapan saja.",
+  },
+  {
+    icon: Shield,
+    title: "Free Konsultasi",
+    description: "Konsultasi gratis dengan mentor seputar karir dan teknis cybersecurity.",
   },
 ];
 

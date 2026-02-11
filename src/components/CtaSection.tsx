@@ -17,12 +17,12 @@ const CtaSection = () => {
           className="mx-auto max-w-2xl"
         >
           <h2 className="mb-6 text-3xl font-bold md:text-5xl">
-            Siap Memulai Karir di{" "}
-            <span className="text-primary glow-text-primary">Cybersecurity</span>?
+            Siap Menjadi{" "}
+            <span className="text-primary glow-text-primary">Man Behind The Hat</span>?
           </h2>
           <p className="mb-10 text-lg text-muted-foreground">
-            Bergabunglah dengan pemateri yang telah berhasil berkarir di bidang keamanan siber. 
-            Batch pertama dimulai Maret 2026.
+            Kuasai teknik ofensif cybersecurity dalam 3 hari intensif. 
+            Batch pertama dimulai Maret 2026 — slot terbatas!
           </p>
           <Link to="/daftar">
             <Button variant="hero" size="lg" className="text-base px-10 py-6">
