@@ -193,6 +193,7 @@ const Registration = () => {
                   Nama Lengkap <span className="text-destructive">*</span>
                 </Label>
                 <Input id="nama" placeholder="Masukkan nama lengkap" className="bg-muted/50 border-border focus:border-primary" {...register("nama")} />
+                <p className="text-xs text-muted-foreground">* Nama ini akan digunakan sebagai nama pada e-sertifikat</p>
                 {errors.nama && <p className="text-xs text-destructive">{errors.nama.message}</p>}
               </div>
 
