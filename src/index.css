@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +24,7 @@
     --muted: 220 15% 14%;
     --muted-foreground: 215 15% 55%;
 
-    --accent: 185 80% 45%;
+    --accent: 145 60% 50%;
     --accent-foreground: 220 20% 6%;
 
     --destructive: 0 72% 51%;
@@ -47,7 +47,6 @@
 
     /* Custom tokens */
     --glow-primary: 145 80% 42%;
-    --glow-accent: 185 80% 45%;
     --surface-elevated: 220 18% 12%;
   }
 }
@@ -60,10 +59,6 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-mono;
-  }
 }
 
 @layer utilities {
@@ -72,33 +67,12 @@
                 0 0 60px hsl(var(--glow-primary) / 0.1);
   }
 
-  .glow-accent {
-    box-shadow: 0 0 20px hsl(var(--glow-accent) / 0.3),
-                0 0 60px hsl(var(--glow-accent) / 0.1);
-  }
-
   .glow-text-primary {
     text-shadow: 0 0 20px hsl(var(--glow-primary) / 0.5),
                  0 0 40px hsl(var(--glow-primary) / 0.2);
   }
 
-  .glow-text-accent {
-    text-shadow: 0 0 20px hsl(var(--glow-accent) / 0.5),
-                 0 0 40px hsl(var(--glow-accent) / 0.2);
-  }
-
-  .cyber-grid {
-    background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
   .gradient-radial-primary {
     background: radial-gradient(ellipse at center, hsl(var(--primary) / 0.15) 0%, transparent 70%);
-  }
-
-  .gradient-radial-accent {
-    background: radial-gradient(ellipse at center, hsl(var(--accent) / 0.1) 0%, transparent 70%);
   }
 }
