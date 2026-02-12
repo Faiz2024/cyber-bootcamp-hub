@@ -25,6 +25,7 @@ const plans = [
 const PricingSection = () => {
   return (
     <section id="pricing" className="relative py-24">
+      <div className="absolute inset-0 gradient-radial-primary opacity-30" />
       <div className="relative container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,11 +34,11 @@ const PricingSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-block text-sm uppercase tracking-widest text-primary">
+          <span className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-accent">
             Investasi Karirmu
           </span>
           <h2 className="text-3xl font-bold md:text-5xl">
-            Pilih <span className="text-primary">Paket</span>mu
+            Pilih <span className="text-primary glow-text-primary">Paket</span>mu
           </h2>
         </motion.div>
 
@@ -57,19 +58,19 @@ const PricingSection = () => {
             >
               {plan.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 font-mono text-xs font-bold text-primary-foreground">
                     <Star className="h-3 w-3" /> Populer
                   </span>
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="text-lg font-bold">{plan.name}</h3>
+                <h3 className="font-mono text-lg font-bold">{plan.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{plan.description}</p>
               </div>
 
               <div className="mb-6">
-                <span className="text-3xl font-extrabold text-primary">{plan.price}</span>
+                <span className="font-mono text-3xl font-extrabold text-primary">{plan.price}</span>
                 <span className="ml-2 text-sm text-muted-foreground">/{plan.period}</span>
               </div>
 
@@ -83,7 +84,10 @@ const PricingSection = () => {
               </ul>
 
               <Link to="/daftar">
-                <Button className="w-full">
+                <Button
+                  variant={plan.featured ? "hero" : "hero-outline"}
+                  className="w-full"
+                >
                   Daftar Sekarang
                 </Button>
               </Link>
