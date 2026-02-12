@@ -7,7 +7,6 @@ const CtaSection = () => {
   return (
     <section className="relative py-24">
       <div className="absolute inset-0 gradient-radial-primary" />
-      <div className="absolute inset-0 cyber-grid opacity-20" />
       <div className="relative container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,14 +17,14 @@ const CtaSection = () => {
         >
           <h2 className="mb-6 text-3xl font-bold md:text-5xl">
             Siap Menjadi{" "}
-            <span className="text-primary glow-text-primary">Man Behind The Hat</span>?
+            <span className="text-primary">Man Behind The Hat</span>?
           </h2>
           <p className="mb-10 text-lg text-muted-foreground">
-            Kuasai teknik ofensif cybersecurity dalam 3 hari intensif. 
+            Kuasai teknik ofensif cybersecurity dalam 3 hari intensif.
             Batch pertama dimulai Maret 2026 — slot terbatas!
           </p>
           <Link to="/daftar">
-            <Button variant="hero" size="lg" className="text-base px-10 py-6">
+            <Button size="lg" className="text-base px-10 py-6">
               <ShieldCheck className="mr-2 h-5 w-5" />
               Daftar Sekarang!
             </Button>

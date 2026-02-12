@@ -37,7 +37,6 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section id="features" className="relative py-24">
-      <div className="absolute inset-0 gradient-radial-accent opacity-50" />
       <div className="relative container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,11 +45,11 @@ const FeaturesSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-block font-mono text-sm uppercase tracking-widest text-accent">
+          <span className="mb-4 inline-block text-sm uppercase tracking-widest text-primary">
             Mengapa BoC-Cyber?
           </span>
           <h2 className="text-3xl font-bold md:text-5xl">
-            Keunggulan <span className="text-accent glow-text-accent">Kami</span>
+            Keunggulan <span className="text-primary">Kami</span>
           </h2>
         </motion.div>
 
@@ -62,12 +61,12 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:glow-primary"
+              className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50"
             >
               <div className="mb-4 inline-flex rounded-md bg-primary/10 p-3 text-primary">
                 <feature.icon className="h-6 w-6" />
               </div>
-              <h3 className="mb-2 font-mono text-lg font-bold">{feature.title}</h3>
+              <h3 className="mb-2 text-lg font-bold">{feature.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}
